@@ -15,20 +15,19 @@
     </div>
     <div class="follow btn-group" role="group" aria-label="...">
       <div class="col-sm-6 following">
-        <button type="button" class="btn btn-default"><%= link_to "Following", followings_user_path(@user) %></button>
+        <button type="button" class="btn btn-default"><%= link_to "Following", "#" %></button>
       </div>
       <div class="col-sm-6 follower">
         <button type="button" class="btn btn-default"><%= link_to "Follower", followers_user_path(@user) %></button>
       </div>
     </div>
   </aside>
-  <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-    <% end %>
+  <div class="col-md-8 list">
+    <h1>Following List</h1>
+    <% @followings.each do |user| %>
+      <div class="f-list">
+          <span><%= gravatar_for @user %><%= user.name %></span>
+      </div>
+      <% end %>
   </div>
 </div>

@@ -33,4 +33,8 @@ class User < ActiveRecord::Base
     following_users.include?(other_user)
   end
   
+  def follower?(other_user)
+    follower_users.include?(other_user)
+  end
+  
 end

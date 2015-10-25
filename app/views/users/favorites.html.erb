@@ -21,17 +21,18 @@
         <button type="button" class="btn btn-default"><%= link_to "Follower", followers_user_path(@user) %></button>
       </div>
       <div class="col-sm-4 favorite">
-        <button type="button" class="btn btn-default"><%= link_to "Favorite", favorites_user_path(@user) %></button>
+        <button type="button" class="btn btn-default"><%= link_to "Favorite", '#' %></button>
       </div>
     </div>
   </aside>
-  <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
+  <div class="col-md-8 list">
+    <h1>Favorite List</h1>
+    <% @favorite.each do |a| %>
+      <div class="f-list">
+        <div style="font-size:20px;font-wegiht:700;color:#66e;"></div>
+          <span><%= gravatar_for @user %><%= @user.name %></span>
+          <div><%= a.content %></div>
+      </div>
     <% end %>
   </div>
 </div>

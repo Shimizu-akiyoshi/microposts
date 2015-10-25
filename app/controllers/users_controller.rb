@@ -43,10 +43,16 @@ class UsersController < ApplicationController
     @followers = @user.follower_users
   end
   
+  def favorites
+    @user = User.find(params[:id])
+    @favorite = @user.favorite_microposts
+  end
+  
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :location, :profile,
                                  :password_confirmation)
   end
+  
 end
